@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contattami</title>
+    <style>
+        /* Un pizzico di grafica per non farlo sembrare degli anni '90 */
+        body { font-family: Arial, sans-serif; max-width: 400px; margin: 50px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { background-color: #f44336; color: white; padding: 10px 15px; border: none; cursor: pointer; width: 100%; }
+        button:hover { background-color: #d32f2f; }
+    </style>
+</head>
+<body>
+
+    <h2>Invia un messaggio</h2>
+    
+    <!-- Sostituisci "LA_TUA_EMAIL@gmail.com" con il tuo vero indirizzo Gmail -->
+    <form action="https://formsubmit.co/gabriele.palma120508@gmail.com" method="POST">
+        
+        <!-- Campi del form -->
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Tua Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Messaggio:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <!-- Configurazione FormSubmit (Opzionale ma utile) -->
+        <input type="hidden" name="_subject" value="Nuovo messaggio dal sito web!">
+        <input type="hidden" name="_captcha" value="false"> <!-- Disattiva il captcha se vuoi un invio rapido -->
+
+        <button type="submit">Invia Email</button>
+    </form>
+
+</body>
+</html>

@@ -2,35 +2,229 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatti</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .contact-container {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-container:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #333333;
+            margin-bottom: 8px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        p.subtitle {
+            color: #666;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #555555;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        input:focus, 
+        textarea:focus {
+            border-color: #4a90e2;
+            background-color: #ffffff;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+        }
+
+        input:focus + label,
+        textarea:focus + label {
+            color: #4a90e2;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        }
+
+        button:hover {
+            background-color: #357abd;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(53, 122, 189, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result-message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-message.success {
+            display: block;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .result-message.error {
+            display: block;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-    <h2>Invia un messaggio</h2>
-    
-    <!-- L'action ora punta a Web3Forms -->
-    <form action="https://api.web3forms.com/submit" method="POST">
+    <div class="contact-container">
+        <h2>Invia un messaggio</h2>
+        <p class="subtitle">Scrivici e ti risponderemo il prima possibile!</p>
+        
+        <form id="contactForm" method="POST">
+            <input type="hidden" name="access_key" value="abec19ab-3007-4cac-a384-ddbdbaf8d0cc">
 
-        <!-- INCOLLA QUI LA TUA ACCESS KEY DI WEB3FORMS -->
-        <input type="hidden" name="access_key" value="abec19ab-3007-4cac-a384-ddbdbaf8d0cc">
+            <div class="input-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
+            </div>
 
-        <div>
-            <label>Nome:</label>
-            <input type="text" name="name" required>
-        </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="esempio@email.com" required>
+            </div>
 
-        <div>
-            <label>Email:</label>
-            <input type="email" name="email" required>
-        </div>
+            <div class="input-group">
+                <label for="message">Messaggio:</label>
+                <textarea id="message" name="message" placeholder="Scrivi qui il tuo messaggio..." required></textarea>
+            </div>
 
-        <div>
-            <label>Messaggio:</label>
-            <textarea name="message" required></textarea>
-        </div>
+            <button type="submit" id="submitBtn">Invia Email</button>
+        </form>
 
-        <button type="submit">Invia Email</button>
-    </form>
+        <div id="result" class="result-message"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('result');
+        const button = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            button.disabled = true;
+            button.innerText = "Invio in corso...";
+            
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            result.className = "result-message";
+            result.style.display = "none";
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let jsonResponse = await response.json();
+                if (response.status == 200) {
+                    result.classList.add('success');
+                    result.innerHTML = "✨ Messaggio inviato con successo!";
+                    form.reset();
+                } else {
+                    result.classList.add('error');
+                    result.innerHTML = "❌ Errore: " + jsonResponse.message;
+                }
+            })
+            .catch(error => {
+                result.classList.add('error');
+                result.innerHTML = "⚠️ Qualcosa è andato storto. Riprova più tardi.";
+            })
+            .then(() => {
+                button.disabled = false;
+                button.innerText = "Invia Email";
+            });
+        });
+    </script>
 
 </body>
 </html>

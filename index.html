@@ -3,228 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti</title>
+    <title>Invia Candidatura - Gratis</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f0f4f8;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            height: 100vh;
+            margin: 0;
         }
-
-        .contact-container {
-            background-color: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 450px;
-            transition: transform 0.3s ease;
+            max-width: 400px;
         }
-
-        .contact-container:hover {
-            transform: translateY(-5px);
-        }
-
         h2 {
-            color: #333333;
-            margin-bottom: 8px;
-            font-size: 28px;
-            text-align: center;
+            margin-top: 0;
+            color: #1a2a3a;
+            margin-bottom: 20px;
         }
-
-        p.subtitle {
-            color: #666;
-            text-align: center;
-            font-size: 14px;
-            margin-bottom: 30px;
+        .form-group {
+            margin-bottom: 15px;
         }
-
-        .input-group {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
         label {
             display: block;
-            color: #555555;
+            margin-bottom: 6px;
             font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 8px;
-            transition: color 0.3s ease;
+            color: #4a5568;
         }
-
         input[type="text"],
         input[type="email"],
-        textarea {
+        input[type="file"] {
             width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e1e1e1;
-            border-radius: 8px;
-            font-size: 15px;
-            color: #333;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input:focus {
             outline: none;
-            transition: all 0.3s ease;
-            background-color: #f9f9f9;
+            border-color: #3182ce;
         }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        input:focus, 
-        textarea:focus {
-            border-color: #4a90e2;
-            background-color: #ffffff;
-            box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
-        }
-
-        input:focus + label,
-        textarea:focus + label {
-            color: #4a90e2;
-        }
-
         button {
             width: 100%;
-            padding: 14px;
-            background-color: #4a90e2;
+            padding: 12px;
+            background-color: #3182ce;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+            transition: background 0.2s;
         }
-
         button:hover {
-            background-color: #357abd;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(53, 122, 189, 0.4);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .result-message {
-            margin-top: 20px;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 14px;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .result-message.success {
-            display: block;
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .result-message.error {
-            display: block;
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            background-color: #2b6cb0;
         }
     </style>
 </head>
 <body>
 
-    <div class="contact-container">
-        <h2>Invia un messaggio</h2>
-        <p class="subtitle">Scrivici e ti risponderemo il prima possibile!</p>
+<div class="form-container">
+    <h2>Nuova Candidatura</h2>
+    
+    <!-- Sostituisci l'action con il tuo link Formspree -->
+    <form action="https://formspree.io/f/IL_TUO_ID_FORMSPREE" method="POST" enctype="multipart/form-data">
         
-        <form id="contactForm" method="POST">
-            <input type="hidden" name="access_key" value="abec19ab-3007-4cac-a384-ddbdbaf8d0cc">
+        <!-- Configurazione Formspree: Oggetto dell'email personalizzato -->
+        <input type="hidden" name="_subject" value="Nuovo Curriculum Ricevuto dal Sito!">
+        
+        <!-- Configurazione Formspree: Evita la pagina di ringraziamento standard di Formspree (Opzionale) -->
+        <!-- <input type="hidden" name="_next" value="https://tuosito.com/grazie.html"> -->
 
-            <div class="input-group">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
-            </div>
+        <div class="form-group">
+            <label for="name">Nome e Cognome</label>
+            <input type="text" id="name" name="Nome Candidato" required>
+        </div>
 
-            <div class="input-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="esempio@email.com" required>
-            </div>
+        <div class="form-group">
+            <label for="email">Indirizzo Email</label>
+            <input type="email" id="email" name="Email di Contatto" required>
+        </div>
 
-            <div class="input-group">
-                <label for="message">Messaggio:</label>
-                <textarea id="message" name="message" placeholder="Scrivi qui il tuo messaggio..." required></textarea>
-            </div>
+        <div class="form-group">
+            <label for="file">Carica il tuo PDF</label>
+            <input type="file" id="file" name="Documento_PDF" accept="application/pdf" required>
+        </div>
 
-            <button type="submit" id="submitBtn">Invia Email</button>
-        </form>
-
-        <div id="result" class="result-message"></div>
-    </div>
-
-    <script>
-        const form = document.getElementById('contactForm');
-        const result = document.getElementById('result');
-        const button = document.getElementById('submitBtn');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            button.disabled = true;
-            button.innerText = "Invio in corso...";
-            
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            result.className = "result-message";
-            result.style.display = "none";
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let jsonResponse = await response.json();
-                if (response.status == 200) {
-                    result.classList.add('success');
-                    result.innerHTML = "✨ Messaggio inviato con successo!";
-                    form.reset();
-                } else {
-                    result.classList.add('error');
-                    result.innerHTML = "❌ Errore: " + jsonResponse.message;
-                }
-            })
-            .catch(error => {
-                result.classList.add('error');
-                result.innerHTML = "⚠️ Qualcosa è andato storto. Riprova più tardi.";
-            })
-            .then(() => {
-                button.disabled = false;
-                button.innerText = "Invia Email";
-            });
-        });
-    </script>
+        <button type="submit">Invia Candidatura</button>
+    </form>
+</div>
 
 </body>
 </html>

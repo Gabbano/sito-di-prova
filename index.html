@@ -3,69 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invia Candidatura Gratis con PDF</title>
+    <title>Invia Candidatura - FormBold</title>
     <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --bg-input: #f9fafb;
+            --border-color: #e5e7eb;
+        }
+
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f3f4f6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
+
         .form-container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             width: 100%;
-            max-width: 400px;
+            max-width: 440px;
+            backdrop-filter: blur(8px);
         }
+
         h2 {
             margin-top: 0;
-            color: #1f2937;
-            margin-bottom: 20px;
-            font-size: 22px;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 22px;
         }
+
         label {
             display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: #4b5563;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text-main);
         }
+
         input[type="text"],
-        input[type="email"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+            color: var(--text-main);
+            transition: all 0.2s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+        }
+
+        /* Stilizzazione speciale per il campo File */
         input[type="file"] {
             width: 100%;
-            padding: 11px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            box-sizing: border-box;
             font-size: 14px;
-        }
-        input:focus {
-            outline: none;
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #4f46e5;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
+            color: var(--text-muted);
+            box-sizing: border-box;
+            padding: 10px;
+            background: var(--bg-input);
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
             cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-weight: 500;
+            color: var(--text-main);
+            cursor: pointer;
+            margin-right: 10px;
             transition: background 0.2s;
         }
+
+        input[type="file"]::file-selector-button:hover {
+            background: #f3f4f6;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+            margin-top: 10px;
+        }
+
         button:hover {
-            background-color: #4338ca;
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -73,18 +143,18 @@
 
 <div class="form-container">
     <h2>Nuova Candidatura</h2>
+    <div class="subtitle">Compila i campi e allega il tuo CV in formato PDF.</div>
     
-    <!-- Sostituisci l'azione con l'URL FormBold che hai copiato -->
     <form action="https://formbold.com/s/3Kmdj" method="POST" enctype="multipart/form-data">
         
         <div class="form-group">
             <label for="name">Nome e Cognome</label>
-            <input type="text" id="name" name="Nome_Completo" required>
+            <input type="text" id="name" name="Nome_Completo" placeholder="Es. Mario Rossi" required>
         </div>
 
         <div class="form-group">
             <label for="email">Indirizzo Email</label>
-            <input type="email" id="email" name="Email_Contatto" required>
+            <input type="email" id="email" name="Email_Contatto" placeholder="esempio@gmail.com" required>
         </div>
 
         <div class="form-group">
@@ -92,7 +162,7 @@
             <input type="file" id="file" name="File_PDF" accept="application/pdf" required>
         </div>
 
-        <button type="submit">Invia Modulo</button>
+        <button type="submit">Invia Candidatura</button>
     </form>
 </div>
 

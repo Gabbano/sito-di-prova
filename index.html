@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invia Candidatura - Gratis</title>
+    <title>Invia Candidatura Gratis con PDF</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f0f4f8;
+            background-color: #f3f4f6;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,52 +17,55 @@
         .form-container {
             background: white;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             width: 100%;
             max-width: 400px;
         }
         h2 {
             margin-top: 0;
-            color: #1a2a3a;
+            color: #1f2937;
             margin-bottom: 20px;
+            font-size: 22px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
         label {
             display: block;
             margin-bottom: 6px;
             font-weight: 600;
-            color: #4a5568;
+            color: #4b5563;
         }
         input[type="text"],
         input[type="email"],
         input[type="file"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e0;
-            border-radius: 5px;
+            padding: 11px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
             box-sizing: border-box;
+            font-size: 14px;
         }
         input:focus {
             outline: none;
-            border-color: #3182ce;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
         button {
             width: 100%;
             padding: 12px;
-            background-color: #3182ce;
+            background-color: #4f46e5;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
             transition: background 0.2s;
         }
         button:hover {
-            background-color: #2b6cb0;
+            background-color: #4338ca;
         }
     </style>
 </head>
@@ -71,31 +74,25 @@
 <div class="form-container">
     <h2>Nuova Candidatura</h2>
     
-    <!-- Sostituisci l'action con il tuo link Formspree -->
-    <form action="https://formspree.io/f/xvzyqglp" method="POST" enctype="multipart/form-data">
+    <!-- Sostituisci l'azione con l'URL FormBold che hai copiato -->
+    <form action="https://formbold.com/s/IL_TUO_ID_FORMBOLD" method="POST" enctype="multipart/form-data">
         
-        <!-- Configurazione Formspree: Oggetto dell'email personalizzato -->
-        <input type="hidden" name="_subject" value="Nuovo Curriculum Ricevuto dal Sito!">
-        
-        <!-- Configurazione Formspree: Evita la pagina di ringraziamento standard di Formspree (Opzionale) -->
-        <!-- <input type="hidden" name="_next" value="https://tuosito.com/grazie.html"> -->
-
         <div class="form-group">
             <label for="name">Nome e Cognome</label>
-            <input type="text" id="name" name="Nome Candidato" required>
+            <input type="text" id="name" name="Nome_Completo" required>
         </div>
 
         <div class="form-group">
             <label for="email">Indirizzo Email</label>
-            <input type="email" id="email" name="Email di Contatto" required>
+            <input type="email" id="email" name="Email_Contatto" required>
         </div>
 
         <div class="form-group">
             <label for="file">Carica il tuo PDF</label>
-            <input type="file" id="file" name="Documento_PDF" accept="application/pdf" required>
+            <input type="file" id="file" name="File_PDF" accept="application/pdf" required>
         </div>
 
-        <button type="submit">Invia Candidatura</button>
+        <button type="submit">Invia Modulo</button>
     </form>
 </div>
 

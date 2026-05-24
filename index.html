@@ -1,141 +1,152 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invia Candidatura - Google Script</title>
-    <style>
-        :root {
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
-            --text-main: #1f2937;
-            --text-muted: #4b5563;
-            --bg-input: #f9fafb;
-            --border-color: #e5e7eb;
-        }
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .form-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 440px;
-            backdrop-filter: blur(8px);
-        }
-        h2 { margin: 0 0 8px 0; color: var(--text-main); font-size: 26px; font-weight: 700; }
-        .subtitle { color: var(--text-muted); font-size: 14px; margin-bottom: 30px; }
-        .form-group { margin-bottom: 22px; }
-        label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 14px; color: var(--text-main); }
-        input[type="text"], input[type="email"] {
-            width: 100%; padding: 12px 16px; background-color: var(--bg-input);
-            border: 1px solid var(--border-color); border-radius: 8px; box-sizing: border-box; font-size: 15px;
-        }
-        input:focus { outline: none; border-color: var(--primary); background-color: #fff; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); }
-        input[type="file"] { width: 100%; font-size: 14px; color: var(--text-muted); padding: 10px; background: var(--bg-input); border: 1px dashed #cbd5e1; border-radius: 8px; cursor: pointer; }
-        button {
-            width: 100%; padding: 14px; background-color: var(--primary); color: white; border: none; border-radius: 8px;
-            font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s ease-in-out; margin-top: 10px;
-        }
-        button:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
-        #status { margin-top: 15px; font-size: 14px; text-align: center; font-weight: bold; }
-    </style>
+    <link rel="stylesheet" href="stylePage.css">
+    <title>not-a-real-site-byGP</title>
 </head>
+
 <body>
+    <!-- NAVIGAZIONE -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">societaNonNome</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#chi-siamo">Chi Siamo</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="form-container">
-    <h2>Nuova Candidatura</h2>
-    <div class="subtitle">Compila i campi e allega il tuo CV in formato PDF.</div>
-    
-    <form id="uploadForm">
-        <div class="form-group">
-            <label for="name">Nome e Cognome</label>
-            <input type="text" id="name" required>
+    <!-- SEZIONE HERO -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Soluzioni digitali per il domani</h1>
+            <p>In societaNonNome aiutiamo le aziende a scalare, ottimizzare e proteggere i propri flussi di lavoro con tecnologie cloud di ultima generazione.</p>
+            <a href="#servizi" class="btn">Scopri i nostri prodotti</a>
         </div>
+    </section>
 
-        <div class="form-group">
-            <label for="email">Indirizzo Email</label>
-            <input type="email" id="email" required>
+    <!-- SEZIONE SERVIZI / PRODOTTI -->
+    <section id="servizi" class="section">
+        <h2 class="section-title">I Nostri Servizi</h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3>Cloud Computing</h3>
+                <p>Infrastrutture sicure e scalabili per ospitare i tuoi dati e le tue applicazioni con massima affidabilità.</p>
+            </div>
+            <div class="card">
+                <h3>Intelligenza Artificiale</h3>
+                <p>Strumenti avanzati di analisi dati e automazione per prendere decisioni aziendali più rapide e intelligenti.</p>
+            </div>
+            <div class="card">
+                <h3>Cybersecurity</h3>
+                <p>Protezione di livello enterprise per difendere la tua rete aziendale e i dati sensibili da qualsiasi minaccia.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="form-group">
-            <label for="file">Carica il tuo PDF</label>
-            <input type="file" id="file" accept="application/pdf" required>
+    <!-- SEZIONE CHI SIAMO -->
+    <section id="chi-siamo" class="section section-white">
+        <h2 class="section-title">La Nostra Missione</h2>
+        <div class="about-text">
+            <p>Fondata con l'obiettivo di rendere la tecnologia accessibile ed efficiente, <strong>societaNonNome</strong> si impegna ogni giorno a sviluppare software che migliorino la produttività delle persone e delle imprese. Crediamo nell'innovazione continua, nella sostenibilità digitale e nella centralità del cliente.</p>
         </div>
+    </section>
 
-        <button type="submit" id="submitBtn">Invia Candidatura</button>
-        <div id="status"></div>
-    </form>
-</div>
+    <!-- SEZIONE CONTATTI -->
+    <section id="contatti" class="section">
+        <div class="form-container">
+            <h2>Nuova Candidatura</h2>
+            <div class="subtitle">Compila i campi e allega il tuo CV in formato PDF.</div>
 
-<script>
-    // INCOLLA QUI L'URL CHE HAI COPIATO DA GOOGLE APPS SCRIPT (Finisce con /exec)
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzymepZB0tcofKHbMZcV5E0OcBlNKmpW4_uY-L83SfP56az-7bxuaQ8uPhQ-jog99hL7Q/exec";
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label for="name">Nome e Cognome</label>
+                    <input type="text" id="name" required>
+                </div>
 
-    document.getElementById('uploadForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const btn = document.getElementById('submitBtn');
-        const status = document.getElementById('status');
-        const fileInput = document.getElementById('file');
-        
-        btn.innerText = "Invio in corso...";
-        btn.disabled = true;
-        status.innerText = "";
+                <div class="form-group">
+                    <label for="email">Indirizzo Email</label>
+                    <input type="email" id="email" required>
+                </div>
 
-        const file = fileInput.files[0];
-        const reader = new FileReader();
-        
-        reader.readAsDataURL(file);
-        reader.onload = function() {
-            const base64Data = reader.result;
-            
-            // Creiamo i parametri da spedire a Google
-            const formData = new URLSearchParams();
-            formData.append('Nome_Completo', document.getElementById('name').value);
-            formData.append('Email_Contatto', document.getElementById('email').value);
-            formData.append('File_PDF_Base64', base64Data);
-            formData.append('File_PDF_Nome', file.name);
+                <div class="form-group">
+                    <label for="file">Carica il tuo PDF</label>
+                    <input type="file" id="file" accept="application/pdf" required>
+                </div>
 
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.result === 'success') {
-                    status.style.color = "green";
-                    status.innerText = "Candidatura inviata con successo!";
-                    document.getElementById('uploadForm').reset();
-                } else {
-                    status.style.color = "red";
-                    status.innerText = "Errore durante l'invio.";
-                }
-            })
-            .catch(error => {
-                status.style.color = "red";
-                status.innerText = "Errore di connessione.";
-            })
-            .finally(() => {
-                btn.innerText = "Invia Candidatura";
-                btn.disabled = false;
-            });
-        };
-    });
-</script>
+                <button type="submit" id="submitBtn">Invia Candidatura</button>
+                <div id="status"></div>
+            </form>
+        </div>
+    </section>
 
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 societaNonNome. Tutti i diritti riservati.</p>
+        <p>Via dell inesistente | Privacy Policy | Termini di Servizio| by GP</p>
+    </footer>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzymepZB0tcofKHbMZcV5E0OcBlNKmpW4_uY-L83SfP56az-7bxuaQ8uPhQ-jog99hL7Q/exec";
+
+        document.getElementById('uploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('status');
+            const fileInput = document.getElementById('file');
+
+            btn.innerText = "Invio in corso...";
+            btn.disabled = true;
+            status.innerText = "";
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                const base64Data = reader.result;
+
+                const formData = new URLSearchParams();
+                formData.append('Nome_Completo', document.getElementById('name').value);
+                formData.append('Email_Contatto', document.getElementById('email').value);
+                formData.append('File_PDF_Base64', base64Data);
+                formData.append('File_PDF_Nome', file.name);
+
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result === 'success') {
+                            status.style.color = "green";
+                            status.innerText = "Candidatura inviata con successo!";
+                            document.getElementById('uploadForm').reset();
+                        } else {
+                            status.style.color = "red";
+                            status.innerText = "Errore durante l'invio.";
+                        }
+                    })
+                    .catch(error => {
+                        status.style.color = "red";
+                        status.innerText = "Errore di connessione.";
+                    })
+                    .finally(() => {
+                        btn.innerText = "Invia Candidatura";
+                        btn.disabled = false;
+                    });
+            };
+        });
+    </script>
 </body>
 </html>
